@@ -69,7 +69,7 @@ class node {
 }
 function insert(head, HTMLnode) {
     if (head == null) { return head = last = new node(HTMLnode); }
-    if (isPresent(HTMLnode.innerText));
+    // if (isPresent(HTMLnode.innerText));
     last.next = new node(HTMLnode);
     last = last.next;
     return head;
@@ -86,21 +86,6 @@ function delAtEnd(head) {
     last = curr;
     return head;
 }
-function isPresent(val) { // is val already present then del it 
-    let curr = head, f = null;
-    if (head.data.innerText == val) {
-        delAtEnd(head);
-    }
-    while (curr) {
-        if (curr.data.innerText == val) {
-            f.next = curr.next;
-            return true;
-        }
-        f = curr;
-        curr = curr.next;
-    }
-    return false;
-}
 let head = null, last = null;
 let prevCell;
 let cellNo;
@@ -116,14 +101,19 @@ function delCircle() {
         prevCell = last.data;
 }
 function checkNum(cell) {
+    if (cell.innerHTML != "" && cell.firstElementChild.style.backgroundColor == `#E25E3E`) return; // can't updated by user
     if (head == null) prevCell = undefined;
     console.log("prevCell :", prevCell);
     if (prevCell != undefined && prevCell.innerText == "") {   // prev cell the user remains empty
+        if(cell.innerHTML == ""){
+            delAtEnd();
+            if(last)
+            prevCell = last.data;
+        }
         delCircle();
     }
     console.log("cell clicked");
     cellNo = cell;
-    if (cell.innerHTML != "" && cell.firstElementChild.style.backgroundColor == `#E25E3E`) return; // can't updated by user
     circle = createNumCircle(`#FFBA86`, `#000`);
     circle.style.fontWeight = `900`;
     cell.innerHTML = "";
