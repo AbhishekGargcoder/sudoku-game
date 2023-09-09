@@ -101,7 +101,7 @@ function delCircle() {
         prevCell = last.data;
 }
 function checkNum(cell) {
-    if (cell.innerHTML != "" && cell.firstElementChild.style.backgroundColor == `#E25E3E`) return; // can't updated by user
+    if (cell.innerHTML != "" && cell.firstElementChild.style.backgroundColor == `rgb(226, 94, 62)`) return; // can't updated by user
     if (head == null) prevCell = undefined;
     console.log("prevCell :", prevCell);
     if (prevCell != undefined && prevCell.innerText == "") {   // prev cell the user remains empty
